@@ -48,28 +48,28 @@ export function getData() {
   const imgurl = `https://picsum.photos/id/237/300/200`;
 
   let request = new Request(imgurl, {
-    cache: 'default',
-    credentials: 'same-origin',
-    method: 'GET',
-    mode: 'no-cors',
+    cache: "default",
+    credentials: "same-origin",
+    method: "GET",
+    mode: "no-cors",
   });
 
   fetch(imgurl).then((resp) => {
-    console.log('External IMG mode: cors');
+    console.log("External IMG mode: cors");
     console.log(resp.status); // 200
   });
-  fetch(imgurl, { mode: 'no-cors' }).then((resp) => {
-    console.log('External IMG mode: no-cors');
+  fetch(imgurl, { mode: "no-cors" }).then((resp) => {
+    console.log("External IMG mode: no-cors");
     console.log(resp.status); // 0
   });
 
-  const jsonurl = `http://127.0.0.1:5500/local-sample.json`;
-  fetch(jsonurl, { mode: 'cors' }).then((resp) => {
-    console.log('Local JSON mode: cors');
+  const jsonurl = `http://127.0.0.1:8080/local-sample.json`;
+  fetch(jsonurl, { mode: "cors" }).then((resp) => {
+    console.log("Local JSON mode: cors");
     console.log(resp.status); // 200
   });
-  fetch(jsonurl, { mode: 'no-cors' }).then((resp) => {
-    console.log('Local JSON mode: no-cors');
+  fetch(jsonurl, { mode: "no-cors" }).then((resp) => {
+    console.log("Local JSON mode: no-cors");
     console.log(resp.status); // 0
   });
 }

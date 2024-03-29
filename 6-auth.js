@@ -6,30 +6,31 @@ export function getData() {
   //controlling when cookies and credentials are passed to a server
   //CSP meta tags and headers
 
-  let str = 'http://127.0.0.1:3000/?name=value&steve=griffith';
+  let str = "http://127.0.0.1:3000/?name=value&steve=griffith";
   let url = new URL(str); //url.search
   let sp = url.searchParams;
-  sp.append('hello', 'world');
-  sp.append('api-key', 'kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh');
+  sp.append("hello", "world");
+  sp.append("api-key", "kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh");
   // document.cookie('')
 
   let h = new Headers();
   // h.append('content-type', 'application/json')
   // h.append('origin', 'https://cia.org')
-  h.append('x-api-key', 'kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh'); //API key
-  h.append('Authorization', 'Bearer kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh'); //JWT
+  h.append("x-api-key", "kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh"); //API key
+  h.append("Authorization", "Bearer kajshdfkahjsdfkjhsdfkahsdfkjksdjhfksjdh"); //JWT
   //Forbidden Header Names
 
   let request = new Request(url, {
-    method: 'GET',
+    method: "GET",
+
     headers: h,
-    cache: 'default',
-    credentials: 'same-origin',
+    cache: "default",
+    credentials: "omit",
   });
 
   fetch(request)
     .then((response) => {
-      if (!response.ok) throw new Error('invalid');
+      if (!response.ok) throw new Error("invalid");
       return response.text();
     })
     .then((txt) => {
